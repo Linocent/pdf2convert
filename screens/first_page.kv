@@ -1,0 +1,51 @@
+<MainScreen>:
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        FloatLayout:
+            padding: dp(20), dp(10)
+            pos_hint: {'center_x': .5, 'top': .9}
+            size_hint_y: .9
+
+            canvas.before:
+                Color:
+                    rgba: 0, 0, 0, 1
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text:
+                    ("Bonjour et bienvenue sur ce convertisseur.\n"
+                    "Pour l'utiliser, sélectionné un dossier et convertissez le."
+                    )
+                font_size: sp(28)
+                pos_hint: {'center_x': .5, 'top': 1}
+                size_hint_y: .3
+
+            CustomButton:
+                text: 'Choisir un fichier'
+                on_press:
+                    root.show_load()
+
+<LoadDialog>:
+    BoxLayout:
+        size: root.size
+        pos: root.pos
+        orientation: 'horizontal'
+        FileChooserListView:
+            id: filechooser
+
+        BoxLayout:
+            size_hint_y: None
+            height: 30
+            Button:
+                text: 'Annuler'
+                on_press: root.Cancel()
+            Button:
+                text: 'Convertir'
+                on_press: 
+                    root.search(filechooser.path)
+                    root.cancel()
+
