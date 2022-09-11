@@ -1,3 +1,4 @@
+import config  # noqa
 import os
 from PIL import Image
 
@@ -26,7 +27,7 @@ class MainScreen(Screen):
     def show_load(self):
         content = LoadDialog(cancel=self.dismiss_popup, search=self.makePdf)
         self._popup = Popup(
-            title='Load File',
+            title='Choisissez un fichier',
             content = content,
             size_hint=(.9,.9)
         )
@@ -37,12 +38,9 @@ class MainScreen(Screen):
         pdf_path = f"{path}/images.pdf" 
         for file in os.listdir(path):
             if file.endswith('png'):
-                print(file)
                 file = Image.open(os.path.join(path, file))
                 file = file.convert('RGB')
-                print(file)
                 img_list.append(file)
-                print(img_list)
         img_list[0].save(
             pdf_path,
             'PDF',

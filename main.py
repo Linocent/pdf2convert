@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+import keyboard
 from kivy.app import App
 
 from screens import *
@@ -6,7 +8,6 @@ from screens import *
 class Converter(App):
     def build(self):
         self.title = "Converter"
-
 
 if __name__ == "__main__":
     Converter().run()

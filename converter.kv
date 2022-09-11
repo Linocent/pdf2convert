@@ -4,3 +4,9 @@ ScreenManager:
         name: 'main'
 
 <CustomButton@ButtonBehavior+Label>:
+    canvas.before:
+        Color:
+            rgba: rgba('#ffffff')
+        Rectangle:
+            pos: self.pos
+            size: self.size
